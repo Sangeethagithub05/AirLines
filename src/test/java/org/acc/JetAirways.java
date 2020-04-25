@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.beans.Customizer;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -36,9 +37,9 @@ public class JetAirways {
 }
 	@Test
 	public void flight() throws InterruptedException, IOException {
-		Thread.sleep(2000);
+	Thread.sleep(2000);
 		
-		//One Way
+	//One Way
 		WebElement oneway=driver.findElement(By.xpath("//button[@id='OW']"));
 		oneway.click();
 		
@@ -59,33 +60,30 @@ public class JetAirways {
 		
 		//Start Date
 		WebElement startdate=driver.findElement(By.xpath("//td[@data-input='mon, 10 feb']"));
-		startdate.click();
+	startdate.click();
 		
 		//End Date
 		WebElement enddate=driver.findElement(By.xpath("//td[@data-input='thu, 13 feb']"));
 		enddate.click();
-		
 		// Number of passenger Details
 		WebElement passenger=driver.findElement(By.xpath("//input[@id='passengers']"));
 		passenger.click();
 		WebElement searchbox=driver.findElement(By.xpath("//button[@id='search-button']"));
 		searchbox.click();
 		Thread.sleep(10000);
-		
 		//Flight Selection
 		WebElement flight=driver.findElement(By.xpath("(//li[@class='col-md-6 col-sm-6 col-xs-6 relative up-grid-bar'])[1]"));
 		flight.click();
 		WebElement continuebtn=driver.findElement(By.id("return-button-cart"));
 		continuebtn.click();
 		Thread.sleep(6000);
-		
 		//Passenger Information
 		WebElement firstname=driver.findElement(By.xpath("//input[@id='firstName_ADT0']"));
 		firstname.sendKeys("Sangeetha");
 		String c=firstname.getAttribute("value");
 		Assert.assertEquals("verify firstname", "Sangeetha",c);
-		WebElement lastname=driver.findElement(By.xpath("//input[@id='lastName_ADT0']"));
-		lastname.sendKeys("Pv");
+WebElement lastname=driver.findElement(By.xpath("//input[@id='lastName_ADT0']"));
+	lastname.sendKeys("Pv");
 		String d=lastname.getAttribute("value");
 		Assert.assertEquals("verify lastname", "Pv",d);
 		WebElement gender=driver.findElement(By.xpath("//select[@id='gender_ADT0']"));
@@ -111,26 +109,40 @@ public class JetAirways {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		WebElement continuebtn1=driver.findElement(By.id("return-button-cart"));
 		continuebtn1.click();
+		//seat selection
+				List<WebElement>  seats= driver.findElements(By.className("outbound-22-seat free-seat ng-star-inserted"));
+				for (WebElement x : seats) {
+					System.out.println(x);
+				}
+				
         WebElement continuebtn2=driver.findElement(By.xpath("//button[@id='cart-button']"));
-		continuebtn2.click();
+	continuebtn2.click();
 		Thread.sleep(2000);
 		WebElement continuebtn3=driver.findElement(By.xpath("//button[@id='cart-button']"));
 		continuebtn3.click();
 		
 }
-	
-		
-		
-		
-		
-		
-		
-		
-
-		
 
 
 	}
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+		
+
+
+
 
 	
 
